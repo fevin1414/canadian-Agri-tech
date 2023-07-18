@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
   get 'services/index'
   root 'home#index'
 
@@ -22,4 +24,15 @@ Rails.application.routes.draw do
   get 'about', to: 'about#index'
 
   get 'support', to: 'support#index'
+  get 'login', to: 'sessions#new', as: 'login'
+post 'login', to: 'sessions#create'
+
+
+
+
+  namespace :admin do
+    resources :admins, only: [:index, :new, :create]
+    resources :users, only: [:index, :new, :create]
+    resources :products, only: [:index, :new, :create]
+  end
 end

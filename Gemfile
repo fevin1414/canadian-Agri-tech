@@ -8,6 +8,8 @@ gem "rails", "~> 7.0.5"
 gem 'rubocop'
 gem 'rubocop-rails'
 gem 'rubocop-capybara'
+gem 'bcrypt', '~> 3.1.7'
+
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

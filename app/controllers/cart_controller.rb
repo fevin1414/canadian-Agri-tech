@@ -1,10 +1,7 @@
 class CartController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 end

@@ -72,10 +72,11 @@
               </div>
             </li>
   <ul class="navbar-nav ml-auto">
-        <!-- Sign In -->
-        <li class="nav-item <%= 'active' if current_page?(signin_path) %>">
-          <a class="nav-link" href="<%= signin_path %>">Log In</a>
-        </li>
+       <!-- Sign In -->
+<li class="nav-item <%= 'active' if current_page?(login_path) %>">
+  <a class="nav-link" href="<%= login_path %>">Log In</a>
+</li>
+
         <!-- Cart -->
         <li class="nav-item <%= 'active' if current_page?(cart_path) %>">
           <a class="nav-link" href="<%= cart_path %>">Cart</a>
