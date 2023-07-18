@@ -15,11 +15,9 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
         <!-- Logo -->
-        <<!-- Logo -->
-<a class="navbar-brand" href="<%= root_path %>">
-  <%= image_tag 'logo.png', alt: 'Project Image', class: 'img-fluid logo-image' %>
-</a>
-
+        <a class="navbar-brand" href="<%= root_path %>">
+          <%= image_tag 'logo.png', alt: 'Project Image', class: 'img-fluid logo-image' %>
+        </a>
 
         <!-- Navigation links -->
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -54,7 +52,6 @@
               <a class="nav-link" href="<%= contact_path %>">Contact</a>
             </li>
 
-
             <!-- About Us -->
             <li class="nav-item <%= 'active' if current_page?(about_path) %>">
               <a class="nav-link" href="<%= about_path %>">About Us</a>
@@ -71,18 +68,30 @@
                 <a class="dropdown-item" href="<%= support_path %>">Support Page</a>
               </div>
             </li>
-  <ul class="navbar-nav ml-auto">
-       <!-- Sign In -->
-<li class="nav-item <%= 'active' if current_page?(login_path) %>">
-  <a class="nav-link" href="<%= login_path %>">Log In</a>
+          </ul>
+
+<ul class="navbar-nav ml-auto">
+  <% if logged_in? %>
+    <!-- Log Out -->
+    <li class="nav-item">
+      <%= form_tag logout_path, method: :delete do %>
+        <%= submit_tag "Log Out", class: "btn btn-link nav-link", style: "padding: 0; line-height: 6;" %>
+      <% end %>
+    </li>
+  <% else %>
+    <!-- Log In -->
+    <li class="nav-item <%= 'active' if current_page?(login_path) %>">
+      <a class="nav-link"  href="<%= login_path %>">Log In</a>
+    </li>
+  <% end %>
+
+ <!-- Cart -->
+<li class="nav-item <%= 'active' if current_page?(cart_path) %>">
+  <a class="nav-link" style="line-height: 5;" href="<%= cart_path %>">Cart</a>
 </li>
 
-        <!-- Cart -->
-        <li class="nav-item <%= 'active' if current_page?(cart_path) %>">
-          <a class="nav-link" href="<%= cart_path %>">Cart</a>
-        </li>
-      </ul>
-          </ul>
+</ul>
+
         </div>
       </nav>
     </div>

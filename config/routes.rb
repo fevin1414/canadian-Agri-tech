@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   post 'contact', to: 'contact#create'
   get 'categories', to: 'categories#index'
 
-
   get 'signin', to: 'users#new'
   post 'signin', to: 'users#create'
 
@@ -25,10 +24,8 @@ Rails.application.routes.draw do
 
   get 'support', to: 'support#index'
   get 'login', to: 'sessions#new', as: 'login'
-post 'login', to: 'sessions#create'
-
-
-
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'application#destroy', as: 'logout'
 
   namespace :admin do
     resources :admins, only: [:index, :new, :create]

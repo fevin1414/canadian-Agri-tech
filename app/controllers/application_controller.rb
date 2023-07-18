@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if logged_in?
   end
 
-  private
-
+  # Log in a user
   def log_in(user)
     session[:user_id] = user.id
+  end
+
+  # Log out a user
+  def destroy
+    reset_session
+    redirect_to login_path, notice: "Logged out successfully."
   end
 end
