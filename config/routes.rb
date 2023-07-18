@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'contact', to: 'contact#index'
   post 'contact', to: 'contact#create'
+  get 'categories', to: 'categories#index'
+
 
   get 'signin', to: 'users#new'
   post 'signin', to: 'users#create'
