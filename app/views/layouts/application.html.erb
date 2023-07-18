@@ -80,9 +80,10 @@
     </li>
   <% else %>
     <!-- Log In -->
-    <li class="nav-item <%= 'active' if current_page?(login_path) %>">
-      <a class="nav-link"  href="<%= login_path %>">Log In</a>
-    </li>
+   <li class="nav-item <%= 'active' if current_page?(login_path) %>">
+  <a class="nav-link" style="padding: 0; line-height: 6;" href="<%= login_path %>">Log In</a>
+</li>
+
   <% end %>
 
  <!-- Cart -->
