@@ -5,12 +5,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-  if @user.save
-    flash[:success] = "Signup successful! Please log in."
-    redirect_to signin_path
-  else
-    render :new
-  end
+    if User.exists?(email: @user.email) || User.exists?(name: @user.name)
+      flash.now[:error] = "Username or email already exists. Please choose a different one."
+      render :new
+    elsif @user.save
+      flash[:success] = "Signup successful! Please log in."
+      redirect_to signin_path
+    else
+      render :new
+    end
   end
 
   private
