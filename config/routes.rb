@@ -29,8 +29,26 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :admins, only: [:index, :new, :create]
-    resources :users, only: [:index, :new, :create]
-    resources :products, only: [:index, :new, :create]
+    root to: 'dashboard#index'
+    get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+    get 'admins/new', to: 'admins#new', as: 'new_admin'
+    post 'admins', to: 'admins#create', as: 'create_admin'
+    resources :admins, except: [:show]
+    get 'admins/:id', to: 'admins#show', as: 'admin_show_admin'
+
+
+
+    get 'dashboard/users', to: 'dashboard#users', as: 'users'
+    get 'dashboard/products/new', to: 'dashboard#new_product', as: 'new_product'
+    get 'dashboard/users/:id', to: 'dashboard#show_user', as: 'show_user'
+    delete 'dashboard/users/:id', to: 'dashboard#remove_user', as: 'remove_user'
+    get 'dashboard/categories', to: 'dashboard#categories', as: 'categories'
+    get 'dashboard/categories/new', to: 'dashboard#new_category', as: 'new_category'
+    post 'dashboard/categories', to: 'dashboard#create_category', as: 'create_category'
+    get 'dashboard/categories/:id/edit', to: 'dashboard#edit_category', as: 'edit_category'
+    patch 'dashboard/categories/:id', to: 'dashboard#update_category', as: 'update_category'
+    delete 'dashboard/categories/:id', to: 'dashboard#remove_category', as: 'remove_category'
   end
+
+
 end

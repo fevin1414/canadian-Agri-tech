@@ -1,0 +1,37 @@
+<h2>Add Admin</h2>
+
+<%= form_with(model: @admin, url: admin_create_admin_path) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <% if @admin.errors[:name].any? %>
+    <div class="error">
+      <%= @admin.errors[:name].first %>
+    </div>
+  <% end %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+  <% if @admin.errors[:email].any? %>
+    <div class="error">
+      <%= @admin.errors[:email].first %>
+    </div>
+  <% end %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <% if @admin.errors[:password].any? %>
+    <div class="error">
+      <%= @admin.errors[:password].first %>
+    </div>
+  <% end %>
+
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %>
+  <% if @admin.errors[:password_confirmation].any? %>
+    <div class="error">
+      <%= @admin.errors[:password_confirmation].first %>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Create Admin' %>
+<% end %>
