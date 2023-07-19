@@ -16,7 +16,6 @@
         <td><%= user.email %></td>
         <td>
           <%= link_to 'View', admin_show_user_path(user) %>
-          <%= link_to 'Remove', admin_remove_user_path(user), method: :delete, data: { confirm: 'Are you sure you want to remove this user?' } %>
         </td>
       </tr>
     <% end %>
@@ -36,15 +35,18 @@
       <tr>
         <td><%= category.name %></td>
         <td>
-         <%= link_to 'Edit', edit_admin_category_path(category) %>
+          <%= link_to 'Edit', edit_admin_category_path(category) %>
+         <%= form_with(url: admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }) do |form| %>
+  <%= form.submit 'Remove' %>
+<% end %>
 
         </td>
       </tr>
     <% end %>
   </tbody>
-
-      <%= link_to 'Add Category', new_admin_category_path %>
 </table>
+
+<%= link_to 'Add Category', new_admin_category_path %>
 
 <h2>Admins</h2>
 <table>
@@ -60,9 +62,7 @@
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
-        <td>
-
-        </td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

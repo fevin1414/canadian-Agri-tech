@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'application#destroy', as: 'logout'
-
   namespace :admin do
     root to: 'dashboard#index'
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -38,10 +37,12 @@ Rails.application.routes.draw do
     get 'dashboard/users', to: 'dashboard#users', as: 'users'
     get 'dashboard/products/new', to: 'dashboard#new_product', as: 'new_product'
     get 'dashboard/users/:id', to: 'dashboard#show_user', as: 'show_user'
-    delete 'dashboard/users/:id', to: 'dashboard#remove_user', as: 'remove_user'
-
     resources :categories, except: [:show]
   end
+
+
+
+
 
 
 end

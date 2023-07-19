@@ -1,9 +1,11 @@
 <% if flash[:notice] %>
   <p class="notice"><%= flash[:notice] %></p>
 <% end %>
+
 <h1>Categories</h1>
 
 <% @categories.each do |category| %>
   <p><%= category.name %></p>
 <% end %>
+
 <%= link_to 'Back to Dashboard', admin_dashboard_path %>

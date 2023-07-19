@@ -13,6 +13,7 @@ class Admin::DashboardController < ApplicationController
   def users
     @users = User.all
   end
+
   def new_product
     @product = Product.new
   end
@@ -57,12 +58,6 @@ class Admin::DashboardController < ApplicationController
     end
   end
 
-  def remove_category
-    category = Category.find(params[:id])
-    category.destroy
-    redirect_to admin_categories_path, notice: 'Category successfully removed.'
-  end
-
 
   private
 
@@ -70,3 +65,6 @@ class Admin::DashboardController < ApplicationController
     params.require(:category).permit(:name)
   end
 end
+
+# Move the route definition outside the action definition
+

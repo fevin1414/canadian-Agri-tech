@@ -7,6 +7,12 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def show
+    @category = Category.find(params[:id])
+    @categories = Category.all
+    render 'index' # Render the index.html.erb view
+  end
+
   def create
     @category = Category.new(category_params)
     if @category.save
@@ -23,13 +29,19 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if category_params[:name] != @category.name && Category.exists?(name: category_params[:name])
-      redirect_to edit_admin_category_path(@category), notice: 'Category name already exists.'
+      redirect_to edit_admin_category_path(@category), alert: 'Category name already exists.'
     elsif @category.update(category_params)
       redirect_to admin_categories_path, notice: 'Category successfully updated.'
     else
       render :edit
     end
   end
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to admin_categories_path, notice: 'Category successfully deleted.'
+  end
+
 
   private
 
