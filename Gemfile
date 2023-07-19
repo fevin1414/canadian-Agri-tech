@@ -9,6 +9,8 @@ gem 'rubocop'
 gem 'rubocop-rails'
 gem 'rubocop-capybara'
 gem 'bcrypt', '~> 3.1.7'
+gem 'jquery-rails'
+
 
 
 

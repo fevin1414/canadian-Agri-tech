@@ -7,7 +7,26 @@
 
   <!-- Include Bootstrap CSS -->
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+  <style>
+    /* Custom styles for the dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <!-- Header section -->
@@ -33,14 +52,16 @@
             </li>
             <!-- Categories Dropdown -->
             <li class="nav-item dropdown <%= 'active' if current_page?(categories_path) %>">
-              <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-              </a>
-              <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                <!-- Add your categorized products links here -->
-                <!-- Example: -->
-                <a class="dropdown-item" href="#">Category 1</a>
-                <a class="dropdown-item" href="#">Category 2</a>
+              <div class="dropdown">
+                <a class="nav-link" href="#" id="categoriesDropdown">
+                  Categories
+                </a>
+                <div class="dropdown-content">
+                  <!-- Add your categorized products links here -->
+                  <!-- Example: -->
+                  <a class="dropdown-item" href="#">Category 1</a>
+                  <a class="dropdown-item" href="#">Category 2</a>
+                </div>
               </div>
             </li>
             <!-- Testimonials -->
@@ -58,41 +79,40 @@
             </li>
             <!-- Support Dropdown -->
             <li class="nav-item dropdown <%= 'active' if current_page?(support_path) %>">
-              <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Support
-              </a>
-              <div class="dropdown-menu" aria-labelledby="supportDropdown">
-                <a class="dropdown-item" href="#">Warranties</a>
-                <a class="dropdown-item" href="#">FAQs</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<%= support_path %>">Support Page</a>
+              <div class="dropdown">
+                <a class="nav-link" href="#" id="supportDropdown">
+                  Support
+                </a>
+                <div class="dropdown-content">
+                  <a class="dropdown-item" href="#">Warranties</a>
+                  <a class="dropdown-item" href="#">FAQs</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<%= support_path %>">Support Page</a>
+                </div>
               </div>
             </li>
           </ul>
 
-<ul class="navbar-nav ml-auto">
-  <% if logged_in? %>
-    <!-- Log Out -->
-    <li class="nav-item">
-      <%= form_tag logout_path, method: :delete do %>
-        <%= submit_tag "Log Out", class: "btn btn-link nav-link", style: "padding: 0; line-height: 6;" %>
-      <% end %>
-    </li>
-  <% else %>
-    <!-- Log In -->
-   <li class="nav-item <%= 'active' if current_page?(login_path) %>">
-  <a class="nav-link" style="padding: 0; line-height: 6;" href="<%= login_path %>">Log In</a>
-</li>
+          <ul class="navbar-nav ml-auto">
+            <% if logged_in? %>
+              <!-- Log Out -->
+              <li class="nav-item">
+                <%= form_tag logout_path, method: :delete do %>
+                  <%= submit_tag "Log Out", class: "btn btn-link nav-link", style: "padding: 0; line-height: 6;" %>
+                <% end %>
+              </li>
+            <% else %>
+              <!-- Log In -->
+              <li class="nav-item <%= 'active' if current_page?(login_path) %>">
+                <a class="nav-link" style="padding: 0; line-height: 6;" href="<%= login_path %>">Log In</a>
+              </li>
+            <% end %>
 
-  <% end %>
-
- <!-- Cart -->
-<li class="nav-item <%= 'active' if current_page?(cart_path) %>">
-  <a class="nav-link" style="line-height: 5;" href="<%= cart_path %>">Cart</a>
-</li>
-
-</ul>
-
+            <!-- Cart -->
+            <li class="nav-item <%= 'active' if current_page?(cart_path) %>">
+              <a class="nav-link" style="line-height: 5;" href="<%= cart_path %>">Cart</a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
@@ -100,19 +120,20 @@
 
   <!-- Content section -->
   <div class="container">
-  <% if flash[:success] %>
-    <div class="alert alert-success">
-      <%= flash[:success] %>
-    </div>
-  <% elsif flash[:error] %>
-    <div class="alert alert-danger">
-      <%= flash[:error] %>
-    </div>
-  <% end %>
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
     <%= yield %>
   </div>
 
   <!-- Include Bootstrap JS -->
+  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>
