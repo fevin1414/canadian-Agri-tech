@@ -3,9 +3,11 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
     @categories = Category.all
   end
+
   def show
     @product = Product.find(params[:id])
   end
+
   def create
     @product = Product.new(product_params)
     if @product.save
@@ -38,7 +40,6 @@ class Admin::ProductsController < ApplicationController
   def index
     redirect_to admin_dashboard_path
   end
-
 
   private
 
