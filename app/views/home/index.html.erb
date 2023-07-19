@@ -1,11 +1,18 @@
 <div class="container">
-  <!-- Welcome message and company overview -->
-  <section class="welcome-section">
-    <h1>Welcome to Canadian Agri Tech</h1> <% if logged_in? %>
-      <p> <%= current_user.name %></p>
+<section class="welcome-section">
+  <h1>Welcome to Canadian Agri Tech</h1>
+  <% if logged_in? %>
+    <% if current_user.is_a?(User) %>
+      <p>Welcome, <%= current_user.name %></p>
+    <% elsif current_user.is_a?(Admin) %>
+      <p>Welcome, <%= current_user.name %> (Admin)</p>
     <% end %>
-    <p>Company overview and description goes here.</p>
-  </section>
+  <% else %>
+    <p>Please log in to access the content.</p>
+  <% end %>
+  <p>Company overview and description goes here.</p>
+</section>
+
 
   <!-- Content section showcasing top products, new arrivals, and discounts -->
   <section class="content-section">
