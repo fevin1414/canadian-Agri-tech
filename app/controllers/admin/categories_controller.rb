@@ -16,7 +16,19 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
 
+  def update
+    @category = Category.find(params[:id])
+    if category_params[:name] != @category.name && Category.exists?(name: category_params[:name])
+      redirect_to edit_admin_category_path(@category), notice: 'Category name already exists.'
+    elsif @category.update(category_params)
+      redirect_to admin_categories_path, notice: 'Category successfully updated.'
+    else
+      render :edit
+    end
   end
 
   private
@@ -24,4 +36,4 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-
+end

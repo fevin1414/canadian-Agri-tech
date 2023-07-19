@@ -1,18 +1,9 @@
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
 <h1>Categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New Category', new_admin_category_path %>
+<% @categories.each do |category| %>
+  <p><%= category.name %></p>
+<% end %>
+<%= link_to 'Back to Dashboard', admin_dashboard_path %>
