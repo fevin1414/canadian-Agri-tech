@@ -85,9 +85,9 @@
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td>
-          <%= link_to 'View', admin_show_product_path(product) %>
-          <%= link_to 'Edit', admin_edit_product_path(product) %>
-          <%= link_to 'Remove', admin_remove_product_path(product), method: :delete, data: { confirm: 'Are you sure you want to remove this product?' } %>
+        <%= link_to 'View', admin_product_path(product) %>
+
+
         </td>
       </tr>
     <% end %>

@@ -16,7 +16,9 @@ class Admin::DashboardController < ApplicationController
 
   def new_product
     @product = Product.new
+    @categories = Category.all
   end
+
 
   def show_user
     @user = User.find(params[:id])

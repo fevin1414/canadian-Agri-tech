@@ -1,0 +1,32 @@
+<h2>Add Product</h2>
+
+<%= form_with(model: @product, url: admin_products_path, local: true) do |form| %>
+  <!-- Product Name -->
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <!-- Product Description -->
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <!-- Product Price -->
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <!-- Category -->
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, @categories, :id, :name %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="actions">
+    <%= form.submit 'Add Product' %>
+  </div>
+<% end %>

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     get 'dashboard/products/new', to: 'dashboard#new_product', as: 'new_product'
     get 'dashboard/users/:id', to: 'dashboard#show_user', as: 'show_user'
     resources :categories, except: [:show]
+    resources :products, only: [:create, :update, :destroy, :show, :index]
+
   end
 
 
