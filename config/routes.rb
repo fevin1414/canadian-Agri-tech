@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get 'dashboard/users/:id', to: 'dashboard#show_user', as: 'show_user'
     delete 'dashboard/users/:id', to: 'dashboard#remove_user', as: 'remove_user'
     get 'dashboard/categories', to: 'dashboard#categories', as: 'categories'
+     resources :categories, only: [:index, :new, :create]
     get 'dashboard/categories/new', to: 'dashboard#new_category', as: 'new_category'
     post 'dashboard/categories', to: 'dashboard#create_category', as: 'create_category'
     get 'dashboard/categories/:id/edit', to: 'dashboard#edit_category', as: 'edit_category'
