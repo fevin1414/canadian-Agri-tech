@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'products/index'
+  get 'products/show'
   get 'sessions/new'
   get 'sessions/create'
   get 'services/index'
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
     post 'admins', to: 'admins#create', as: 'create_admin'
     resources :admins, except: [:show]
     get 'admins/:id', to: 'admins#show', as: 'admin_show_admin'
-
+    resources :products, only: [:index, :show]
     get 'dashboard/users', to: 'dashboard#users', as: 'users'
     get 'dashboard/products/new', to: 'dashboard#new_product', as: 'new_product'
     get 'dashboard/users/:id', to: 'dashboard#show_user', as: 'show_user'

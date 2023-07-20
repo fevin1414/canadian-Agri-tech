@@ -120,3 +120,11 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.product-card {
+  max-width: 300px; /* Adjust the value to your desired size */
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+}
