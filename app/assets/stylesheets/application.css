@@ -128,3 +128,46 @@ body {
   max-width: 100%;
   height: auto;
 }
+/* CSS */
+
+/* Style the dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style the dropdown trigger */
+.dropdown .nav-link {
+  padding: 8px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Show the dropdown content when the dropdown trigger is hovered */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the dropdown items */
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change the background color of dropdown items on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}

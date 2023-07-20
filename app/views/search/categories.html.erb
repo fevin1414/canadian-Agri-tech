@@ -1,0 +1,16 @@
+
+
+<h1>Products by Category: <%= @category.name %></h1>
+
+<div class="product-cards">
+  <% @products.each do |product| %>
+    <div class="product-card">
+
+       <%= image_tag('logo.png', alt: 'Product Image') %>
+        <h3><%= product.name %></h3>
+        <p><%= number_to_currency(product.price) %></p>
+        <%= link_to product_path(product) do %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

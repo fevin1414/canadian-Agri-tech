@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'application#destroy', as: 'logout'
+  get 'products/index'
+  get 'products/show'
+
+  get 'search/categories', to: 'products#products_by_category', as: 'products_by_category'
+
   namespace :admin do
     root to: 'dashboard#index'
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
@@ -41,6 +46,8 @@ Rails.application.routes.draw do
     get 'dashboard/users/:id', to: 'dashboard#show_user', as: 'show_user'
     resources :categories, except: [:show]
     resources :products, except: [:new]  # Remove the duplicated line
+
+
   end
 
 

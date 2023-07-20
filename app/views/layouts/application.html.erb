@@ -50,20 +50,19 @@
             <li class="nav-item <%= 'active' if current_page?(products_path) %>">
               <a class="nav-link" href="<%= products_path %>">Products</a>
             </li>
-            <!-- Categories Dropdown -->
-            <li class="nav-item dropdown <%= 'active' if current_page?(categories_path) %>">
-              <div class="dropdown">
-                <a class="nav-link" href="#" id="categoriesDropdown">
-                  Categories
-                </a>
-                <div class="dropdown-content">
-                  <!-- Add your categorized products links here -->
-                  <!-- Example: -->
-                  <a class="dropdown-item" href="#">Category 1</a>
-                  <a class="dropdown-item" href="#">Category 2</a>
-                </div>
-              </div>
-            </li>
+<li class="nav-item dropdown <%= 'active' if current_page?(products_by_category_path) %>">
+  <div class="dropdown">
+    <a class="nav-link" href="#" id="categoriesDropdown">
+      Categories
+    </a>
+    <div class="dropdown-content">
+      <% @categories.each do |category| %>
+        <%= link_to category.name, products_by_category_path(id: category.id) %>
+      <% end %>
+    </div>
+  </div>
+</li>
+
             <!-- Testimonials -->
             <li class="nav-item <%= 'active' if current_page?(testimonials_path) %>">
               <a class="nav-link" href="<%= testimonials_path %>">Testimonials</a>
