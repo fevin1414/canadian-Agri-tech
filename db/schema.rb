@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_193737) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_041950) do
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_193737) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.string "filename"
+    t.string "file_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "file"
+    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -47,5 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_193737) do
     t.string "password_digest"
   end
 
+  add_foreign_key "images", "products"
   add_foreign_key "products", "categories"
 end

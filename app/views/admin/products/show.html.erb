@@ -20,7 +20,16 @@
   <p><%= @product.category.name %></p>
 </div>
 
+<div>
+  <h3>Images:</h3>
+  <% @product.images.each do |image| %>
+    <% if image == @product.images.first %>
+      <%= image_tag(image.file_url(:thumbnail)) %> <b>(Thumbnail)</b>
+    <% else %>
+      <%= image_tag(image.file_url(:large)) %>
+    <% end %>
+  <% end %>
+</div>
+
 <%= link_to 'Back', admin_products_path %>
 <%= link_to 'Edit', edit_admin_product_path(@product) %>
-
-
